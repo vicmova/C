@@ -505,7 +505,7 @@ int cargar(amigos A[], int *num, char nombre_fichero[]){
 		
 			if(f==NULL){
 
-				printf("Error!!! \n");		
+				//printf("Error!!! \n");		
 				return -1;			
 			
 			} else {
