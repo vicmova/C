@@ -270,7 +270,7 @@ int main(){
 
 			} else {
 
-				printf("Indica el nombre del fichero. \n");
+				printf("Indica el nombre del fichero incluyendo la extensión. \n");
 				
 				scanf("%s", nombre_fichero);
 
