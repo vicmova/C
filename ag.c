@@ -2,7 +2,7 @@
 #include <string.h>
 
 /*
-para esta práctica es necesario crear un fichero para cargar con la función cargar: nombre_fichero.txt
+para esta práctica es necesario crear un fichero para cargar con la función cargar(8), por ejemplo: nombre_fichero.txt
 el fichero debe estar situado en el mismo directorio que este. 
 	
 	L_V_Li 9788888 46
