@@ -1,3 +1,11 @@
+/*
+para esta práctica es necesario crear un fichero para cargar con la función cargar: nombre_fichero.txt
+
+Nombre: L_V_Li. Teléfono: 97888888. Edad: 46
+Nombre: L_Vgow. Teléfono: 97888888. Edad: 36  
+Nombre: L_V_L. Teléfono: 97888888. Edad: 26  
+*/
+
 #include <stdio.h>
 #include <string.h>
 
