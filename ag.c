@@ -3,6 +3,7 @@
 
 /*
 para esta práctica es necesario crear un fichero para cargar con la función cargar: nombre_fichero.txt
+el fichero debe estar situado en el mismo directorio que este. 
 	
 	L_V_Li 9788888 46
 	L_Vgow 97888888 36  
