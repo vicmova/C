@@ -1,14 +1,13 @@
+#include <stdio.h>
+#include <string.h>
+
 /*
 para esta práctica es necesario crear un fichero para cargar con la función cargar: nombre_fichero.txt
 	
-	Nombre: L_V_Li. Teléfono: 97888888. Edad: 46
-	Nombre: L_Vgow. Teléfono: 97888888. Edad: 36  
-	Nombre: L_V_L. Teléfono: 97888888. Edad: 26  
-
+	L_V_Li 9788888 46
+	L_Vgow 97888888 36  
+	L_V_L 97888888 26  
 */
-
-#include <stdio.h>
-#include <string.h>
 
 #define nmax 10
 
@@ -251,27 +250,28 @@ int main(){
 			
 			break;
 
-		case 8: printf("Selecciona una opción: \n\n");
+		case 8: printf("Selecciona una opción: \n");
 			printf("1. Introducir los datos mediante el teclado. \n");
 			printf("2. Introducir los datos desde un fichero. \n");
 				
 			scanf("%d", &opcio);
 
 			if(opcio==1){
-					
+					introducir(A,num);
 
-					while (fscanf (f, "%s, %s, %d", A[i].nom, A[i].telefon, &A[i].edad) > 0){
+					/*while (fscanf (f, "%s, %s, %d", A[i].nom, A[i].telefon, &A[i].edad) > 0){
 
 				
-						fprintf(f,"Nombre: %s. Teléfono: %s. Edad: %d. \n", A[i].nom, A[i].telefon, A[i].edad);			
+						fprintf(f,"%s, %s, %d", A[i].nom, A[i].telefon, A[i].edad);			
 			
-					}
+					}*/
 
 				
 
 			} else {
 
 				printf("Indica el nombre del fichero. \n");
+				
 				scanf("%s", nombre_fichero);
 
 
@@ -398,18 +398,22 @@ int ordenar(amigos A[], int num, int opcio){
 			}
 			i++;
 		}
-	}
-	else{
+	} else {
 		while(canvi==1){
+
 			canvi=0;
+	
 			for(j=0;j<num-i-1;j++){
+				
 				if(A[j].edad>A[j+1].edad){
+					
 					aux=A[j];
 					A[j]=A[j+1];
 					A[j+1]=aux;
 					canvi=1;
 				}
 			}
+			
 			i++;
 		}
 	}
@@ -508,13 +512,13 @@ int cargar(amigos A[], int *num, char nombre_fichero[]){
 		
 				for(i=0;feof(f)==0;i++){
 
-					fscanf (f, "%s, %s, %d", A[i].nom, A[i].telefon, &A[i].edad);
+					fscanf (f, "%s  %s  %d", A[i].nom, A[i].telefon, &A[i].edad);
 				
 			
 				}	
 
 			
-		*num=i;
+		*num=i-1;
 
 		fclose (f);
 				
