@@ -28,7 +28,7 @@ int eliminar(amigos A[], int *num, int opcio, char cadena_eliminar[]);
 
 void guardar(amigos A[], int num, char nombre_fichero[]);
 
-void cargar(amigos A[], int *num, char nombre_fichero);
+int cargar(amigos A[], int *num, char nombre_fichero[]);
 
 
 int main(){
@@ -37,7 +37,10 @@ int main(){
 	int n=1;
 	int opcio;
 	char cadena_buscar[nmax];
-	char contacto[nmax], nombre_fichero[20];
+	char contacto[nmax];
+	char nombre_fichero[12];
+
+	FILE *f;
 
 	amigos A[nmax], B;
 	
@@ -81,7 +84,7 @@ int main(){
 
 		printf("   7.-Guardar contactos en fichero. \n");
 
-		printf("   8.-Pendiente de definir. \n");
+		printf("   8.-Cargar. \n");
 		
 		printf("   0.-Salir de la agenda. \n");
 		
@@ -239,29 +242,34 @@ int main(){
 			
 			break;
 
-		case 8: printf("Selecciona una opción: \n");
+		case 8: printf("Selecciona una opción: \n\n");
 			printf("1. Introducir los datos mediante el teclado. \n");
 			printf("2. Introducir los datos desde un fichero. \n");
 				
 			scanf("%d", &opcio);
 
 			if(opcio==1){
+					
+
+					while (fscanf (f, "%s, %s, %d", A[i].nom, A[i].telefon, &A[i].edad) > 0){
+
+				
+						fprintf(f,"Nombre: %s. Teléfono: %s. Edad: %d. \n", A[i].nom, A[i].telefon, A[i].edad);			
+			
+					}
+
+				
 
 			} else {
 
 				printf("Indica el nombre del fichero. \n");
 				scanf("%s", nombre_fichero);
 
-			/*
-			En caso que usuario opte por la opción de fichero pediremos al usuario el
-			nombre del fichero donde quiere cargar los datos de los amigos para cargarlos
-			en el vector. Previamente tendremos que crear en el mismo directorio de
-			trabajo de nuestro programa.c unfichero .txt con el contenido de los amigos.
-			Cada línea un nombre, telefono y edad.
-			*/
 
 
 			}
+
+			cargar(A, &num, nombre_fichero);
 
 			printf("\n");
 			
@@ -473,84 +481,37 @@ void guardar(amigos A[], int num, char nombre_fichero[]){
 }
 
 
-void cargar(amigos A[], int *num, char nombre_fichero){
+int cargar(amigos A[], int *num, char nombre_fichero[]){
 
 		int i;
-
-		char caracter;
 		
 		FILE *f;
 
 		f=fopen(nombre_fichero, "r");
 
 		
+			if(f==NULL){
 
-			while (fscanf (f, "%s, %s, %d", A[i].nom, A[i].telefon, A[i].edad) > 0){
+				printf("Error!!! \n");		
+				return -1;			
+			
+			} else {
+		
+				for(i=0;feof(f)==0;i++){
 
-									
-	
+					fscanf (f, "%s, %s, %d", A[i].nom, A[i].telefon, &A[i].edad);
+				
 			
+				}	
+
 			
-			}
+		*num=i;
 
 		fclose (f);
-
-/*
-La dificultad radica en cómo se cuándo tengo que parar de leer (scanear datos)
-del fichero. Dos opciones:
--
--
-1.-While fscanf ()>0. Puedo ir leyendo cada línea del fichero.
-FSCANF además de scanear del fichero y guardar en el vector es una
-función que va devolver el número de bytes que se escanean, en el
-momento que lee una línea vacía del fichero ya no dará mayor que 0 y
-podemos salir.
-
-char caracter, nombre_fichero[12];
-
-FILE *f;
-
-f=fopen(nombre_fichero,”r”);
-
-while (fscanf (f, “%s %s %d”.....) > 0)
-{
-
-
-}
-
-fclose (f);
-2.-Utilizando la función feof(f). Esta función devuelve 0 mientras no llegue al
-carcater final de fichero EOF y 1 cuando llega al final
+				
+			
+		}
 
 		
-
-********** Ejemplo. Contar el número de caracteres que hay en un fichero:
-
-	char caracter, nombre_fichero[12];
-	FILE *f;
-
-	int numero=0;
-	
-	f=fopen(nombre_fichero,”r”);
-	
-	while (feof (f) == 0){
-
-		fscanf (f, "%c", &caracter);
-		numero++;
-		
-	}
-
-	fclose (f);
-	return numero;
-	
-	}
-
-Por otra parte,cuando termine de escanear todas las líneas(registros) del
-fichero, necesito darle un valor a *num de los registros que había en el fichero y
-que han sido cargados en el vector.
-
-*/
-
 }
-
 
