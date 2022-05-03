@@ -7,7 +7,6 @@
  
 	Genera manualment un fitxer amb les dades de tots els camps amb almenys 5 registres.
 
-
     b) Realitza una funció que carregui els registres del fitxer en un vector d’estructures de tipus STOCK.
 
     c) Realitza una funció que llisti per pantalla tots els productes amb un preu superior a 15 euros
@@ -40,7 +39,6 @@
 
 #define nmax 15
 
-//#define nmax 10
 
 	typedef struct STOCK {
 
@@ -53,12 +51,13 @@
 
 int cargar(stck A[], int *num, char nombre_fichero[]);
 
-void mostrar(stck A[], int num);
+//void mostrar(stck A[], int num);
+
 
 
 int main(){
 
-	int n=1, num;
+	int n=1, num, opcio;
 
 	stck A[nmax];
 
@@ -100,12 +99,21 @@ int main(){
 		case 0: printf("Bye!! \n");
 		break;
 	
-		case 1: cargar(A, &num, nombre_fichero);
+		case 1: printf("Introducir los datos desde un fichero. \n");
+				
+			printf("Indica el nombre del fichero incluyendo la extensión. \n");
+				
+				scanf("%s", nombre_fichero);
 
-			printf("\n");
+				
+
+			cargar(A, &num, nombre_fichero);
+
+			printf("\n");	
+			
 			break;
 
-		case 2: mostrar(A, num);
+		case 2: //mostrar(A, num);
 
 			printf("\n");
 			break;
@@ -163,8 +171,7 @@ int cargar(stck A[], int *num, char nombre_fichero[]){
 
 		
 			if(f==NULL){
-
-			//printf("Error!!! \n");		
+	
 			return -1;			
 			
 			} else {
@@ -183,10 +190,16 @@ int cargar(stck A[], int *num, char nombre_fichero[]){
 			
 		}
 
+		for(i=0;i<7;i++){
+
+			printf("Código: %s, Cantidad: %d, Precio: %d, Descripción: %s. \n", A[i].codi, A[i].quantitat, A[i].preu, A[i].descripcio);		
+		
+		}
+
 		
 }
 
-void mostrar(stck A[], int num){
+/*void mostrar(stck A[], int num){
 
 	int i;
 		printf("------------------------------------ \n");
@@ -199,4 +212,4 @@ void mostrar(stck A[], int num){
 		
 			}
 
-}
+}*/
