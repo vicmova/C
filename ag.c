@@ -4,10 +4,12 @@
 /*
 para esta práctica es necesario crear un fichero para cargar datos, ver opción 8: nombre_fichero.txt
 el fichero debe estar situado en el mismo directorio, sino debemos especificar ruta;
+
+	formato(nombre telf edad);	
 	
-	L_V_Li 9788888 46
-	L_Vgow 97888888 36  
-	L_V_L 97888888 26  
+		L_V_Li 9788888 46
+		L_Vgow 97888888 36  
+		L_V_L 97888888 26  
 */
 
 #define nmax 10
