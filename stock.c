@@ -51,7 +51,7 @@
 
 int cargar(stck A[], int *num, char nombre_fichero[]);
 
-//void mostrar(stck A[], int num);
+void mostrar(stck A[], int num);
 
 
 
@@ -113,7 +113,7 @@ int main(){
 			
 			break;
 
-		case 2: //mostrar(A, num);
+		case 2: mostrar(A, num);
 
 			printf("\n");
 			break;
@@ -190,16 +190,16 @@ int cargar(stck A[], int *num, char nombre_fichero[]){
 			
 		}
 
-		for(i=0;i<7;i++){
+		/*for(i=0;i<7;i++){
 
 			printf("Código: %s, Cantidad: %d, Precio: %d, Descripción: %s. \n", A[i].codi, A[i].quantitat, A[i].preu, A[i].descripcio);		
 		
-		}
+		}*/
 
 		
 }
 
-/*void mostrar(stck A[], int num){
+void mostrar(stck A[], int num){
 
 	int i;
 		printf("------------------------------------ \n");
@@ -208,8 +208,12 @@ int cargar(stck A[], int *num, char nombre_fichero[]){
 
 			for(i=0;i<num;i++){
 
-			printf("Código: %s, Cantidad: %d, Precio: %d, Descripción: %s. \n", A[i].codi, A[i].quantitat, A[i].preu, A[i].descripcio);		
+				if(A[i].preu > 15){
+
+				printf("Código: %s, Cantidad: %d, Precio: %d, Descripción: %s. \n", A[i].codi, A[i].quantitat, A[i].preu, A[i].descripcio);		
 		
+				}
+
 			}
 
-}*/
+}
