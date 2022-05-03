@@ -20,28 +20,51 @@
 
     g) Afegeix a l'arxiu stock.txt un article més. Demana a l'usuari que introdueixi les dades i afegeix-les al final del fitxer.
 
+
+	FILE:
+
+	00000000 50 10 camiseta
+	00000001 35 50 sudadera
+	00000002 20 101 botas
+	00000003 2 16 gorra		
+	00000004 100 11 gafas
+	00000005 102 11 zapatillas
+	00000006 2 2 tela	 
+
 */
+
+
 
 #include <stdio.h>
 #include<string.h>
+
+#define nmax 15
 
 //#define nmax 10
 
 	typedef struct STOCK {
 
 		char codi[30];
-		char descripcio[15];
 		int quantitat;
 		int preu;
+		char descripcio[15];
 
 	} stck;
 
+int cargar(stck A[], int *num, char nombre_fichero[]);
 
+void mostrar(stck A[], int num);
 
 
 int main(){
 
-	int n=1;
+	int n=1, num;
+
+	stck A[nmax];
+
+	char nombre_fichero[12];
+
+	FILE *f;
 
 	while(n!=0){
 
@@ -77,13 +100,13 @@ int main(){
 		case 0: printf("Bye!! \n");
 		break;
 	
-		case 1: 
-			
+		case 1: cargar(A, &num, nombre_fichero);
+
 			printf("\n");
 			break;
 
-		case 2: 
-s
+		case 2: mostrar(A, num);
+
 			printf("\n");
 			break;
 
@@ -125,5 +148,55 @@ s
 		}
 	
 	}
+
+}
+
+
+
+int cargar(stck A[], int *num, char nombre_fichero[]){
+
+		int i;
+		
+		FILE *f;
+
+		f=fopen(nombre_fichero, "r");
+
+		
+			if(f==NULL){
+
+			//printf("Error!!! \n");		
+			return -1;			
+			
+			} else {
+		
+			for(i=0;feof(f)==0;i++){
+
+			fscanf (f, "%s  %d  %d %s", A[i].codi, &A[i].quantitat, &A[i].preu, A[i].descripcio);
+						
+			}	
+
+			
+		*num=i-1;
+
+		fclose (f);
+				
+			
+		}
+
+		
+}
+
+void mostrar(stck A[], int num){
+
+	int i;
+		printf("------------------------------------ \n");
+		printf("Productos con precio inferior a 15€: \n");
+		printf("------------------------------------ \n");		
+
+			for(i=0;i<num;i++){
+
+			printf("Código: %s, Cantidad: %d, Precio: %d, Descripción: %s. \n", A[i].codi, A[i].quantitat, A[i].preu, A[i].descripcio);		
+		
+			}
 
 }
