@@ -2,8 +2,8 @@
 #include <string.h>
 
 /*
-para esta práctica es necesario crear un fichero para cargar con la función cargar(8), por ejemplo: nombre_fichero.txt
-el fichero debe estar situado en el mismo directorio que este. 
+para esta práctica es necesario crear un fichero para cargar datos, ver opción 8: nombre_fichero.txt
+el fichero debe estar situado en el mismo directorio, sino debemos especificar ruta;
 	
 	L_V_Li 9788888 46
 	L_Vgow 97888888 36  
@@ -129,29 +129,32 @@ int main(){
 			scanf("%d", &opcio);
 			
 			
-			if(opcio==1){
+				if(opcio==1){
 			
-			printf("Indica el nombre del contacto. \n");
+				printf("Indica el nombre del contacto. \n");
 			
-			} else {
+				} else {
 			
-			printf("Indica el teléfono del contacto. \n");
+				printf("Indica el teléfono del contacto. \n");
 			
 			
-			}
+				}
 			
 			scanf("%s", contacto);
 			
 			res = buscar(A, num, opcio, contacto);
 		
 			
-			if(res==-1){
-					printf("El contacto no existe.\n");
+				if(res==-1){
+				
+				printf("El contacto no existe.\n");
+
 				}
 				
 				else {
 					
-					printf("El contacto aparece en la posición %d de la agenda.\n",res+1);
+				printf("El contacto aparece en la posición %d de la agenda.\n",res+1);
+				
 				}	
 
 			printf("\n");
@@ -200,33 +203,36 @@ int main(){
 			
 			scanf("%d", &opcio);
 			
-			if(opcio==1){
+				if(opcio==1){
 			
-			printf("Indica el nombre del contacto.\n");
+				printf("Indica el nombre del contacto.\n");
 			
-			scanf("%s",contacto);
+				scanf("%s",contacto);
 			
 			
-			} else {
+				} else {
 			
-			printf("Indica el teléfono del contacto.\n");
+				printf("Indica el teléfono del contacto.\n");
 			
-			scanf("%s",contacto);
+				scanf("%s",contacto);
 			
-			}
+				}
 			
 			
 			
 			res=eliminar(A, &num, opcio, contacto);
 			
-			if(res==-1){
+				if(res==-1){
 			
 				printf("El contacto: no aparece en la agenda.\n");
-			}
+				
+				}
 			
-			else {
+				else {
+				
 				printf("Ha eliminado el contacto: que aparecían en la entrada:  %d.\n", res+1);
-			}
+				
+				}
 			
 			break;
 		
@@ -257,27 +263,18 @@ int main(){
 				
 			scanf("%d", &opcio);
 
-			if(opcio==1){
-					introducir(A,num);
-
-					/*while (fscanf (f, "%s, %s, %d", A[i].nom, A[i].telefon, &A[i].edad) > 0){
-
-				
-						fprintf(f,"%s, %s, %d", A[i].nom, A[i].telefon, A[i].edad);			
-			
-					}*/
-
+				if(opcio==1){
+					
+				introducir(A,num);
 				
 
-			} else {
+				} else {
 
 				printf("Indica el nombre del fichero incluyendo la extensión. \n");
 				
 				scanf("%s", nombre_fichero);
 
-
-
-			}
+				}
 
 			cargar(A, &num, nombre_fichero);
 
@@ -295,6 +292,7 @@ int main(){
 	
 }
 
+//Declaración de las funciones;
 void introducir(amigos A[], int num) {
 
 	int i;
@@ -316,7 +314,6 @@ void introducir(amigos A[], int num) {
 
 }
 
-//Declaración de las funciones;
 
 void imprimir (amigos A[], int num){
 
@@ -346,11 +343,13 @@ int buscar(amigos A[], int num, int opcio, char cadena_buscar[]){
 			
 
 				i++;
-			}
+				
+				}
 			
 				if(i==num){
 			
 				return -1;
+				
 				}
 			
 				else {
@@ -359,25 +358,24 @@ int buscar(amigos A[], int num, int opcio, char cadena_buscar[]){
 			
 				}
 			
+				} else {
+		
+		
+				while(i<num && strcmp(A[i].telefon, cadena_buscar)!=0){
+			
+				i++;
+			
+				}
+		
+			if(i==num){
+		
+			return -1;
+			
 			} else {
-		
-		
-			while(i<num && strcmp(A[i].telefon, cadena_buscar)!=0){
 			
-			i++;
-			
+			return i;
+		
 			}
-		
-		if(i==num){
-		
-		return -1;
-		}
-		
-		else {
-			
-		return i;
-		
-		}
 	}
 }
 
@@ -387,19 +385,31 @@ int ordenar(amigos A[], int num, int opcio){
 	amigos aux;
 	
 	if(opcio==1){
+
 		while(canvi==1){
+			
 			canvi=0;
+			
 			for(j=0;j<num-i-1;j++){
+				
 				if(strcmp(A[j].nom,A[j+1].nom)>0){
-					aux=A[j];
-					A[j]=A[j+1];
-					A[j+1]=aux;
-					canvi=1;
+					
+				aux=A[j];
+				
+				A[j]=A[j+1];
+				
+				A[j+1]=aux;
+					
+				canvi=1;
+				
 				}
 			}
+
 			i++;
 		}
-	} else {
+
+		} else {
+
 		while(canvi==1){
 
 			canvi=0;
@@ -408,10 +418,14 @@ int ordenar(amigos A[], int num, int opcio){
 				
 				if(A[j].edad>A[j+1].edad){
 					
-					aux=A[j];
-					A[j]=A[j+1];
-					A[j+1]=aux;
-					canvi=1;
+				aux=A[j];
+					
+				A[j]=A[j+1];
+
+				A[j+1]=aux;
+	
+				canvi=1;
+				
 				}
 			}
 			
@@ -425,31 +439,35 @@ void insertar(amigos A[], int *num, int opcio, amigos B){
 
 	int i,j;
 		
-	if(opcio==1){
+		if(opcio==1){
 		
 		i=0;
 		
-		while(i<*num && strcmp(B.nom, A[i].nom)>0){
+			while(i<*num && strcmp(B.nom, A[i].nom)>0){
+			
 			i++;
-		}
+			
+			}
 		
-		for(j=*num;j>i;j--){
+			for(j=*num;j>i;j--){
 		
 			A[j]=A[j-1];
-		}
+			
+			}
 		
-		A[i]=B;
+			A[i]=B;
 		
-		(*num)++;
-	}
-	
-	else {
-		i=*num;
+			(*num)++;
+		
+			} else {
+		
+			i=*num;
 
-		A[i]=B;
+			A[i]=B;
 		
-		(*num)++;
-	}
+			(*num)++;
+			
+			}
 }
 
 
@@ -460,6 +478,7 @@ int eliminar(amigos A[], int *num, int opcio, char cadena_eliminar[]){
 	i=buscar(A,*num, opcio, cadena_eliminar);
 	
 	if(i!=-1){
+
 		for(j=i;j<*num;j++){
 		
 			A[j]=A[j+1];
@@ -484,7 +503,7 @@ void guardar(amigos A[], int num, char nombre_fichero[]){
 			
 			for(i=0;i<num;i++){
 
-				fprintf(f, "Nombre: %s. Teléfono: %s. \n", A[i].nom, A[i].telefon);
+			fprintf(f, "Nombre: %s. Teléfono: %s. \n", A[i].nom, A[i].telefon);
 
 			}
 
@@ -506,17 +525,17 @@ int cargar(amigos A[], int *num, char nombre_fichero[]){
 		
 			if(f==NULL){
 
-				//printf("Error!!! \n");		
-				return -1;			
+			//printf("Error!!! \n");		
+			return -1;			
 			
 			} else {
 		
-				for(i=0;feof(f)==0;i++){
+			for(i=0;feof(f)==0;i++){
 
-					fscanf (f, "%s  %s  %d", A[i].nom, A[i].telefon, &A[i].edad);
+			fscanf (f, "%s  %s  %d", A[i].nom, A[i].telefon, &A[i].edad);
 				
 			
-				}	
+			}	
 
 			
 		*num=i-1;
