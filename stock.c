@@ -53,15 +53,27 @@ int cargar(stck A[], int *num, char nombre_fichero[]);
 
 void mostrar(stck A[], int num);
 
+/*
+Realitza una funció que busqui un producte donat un codi i mostri per pantalla,  
+en cas que el producte es trobi, tots els camps del producte
+*/
 
+int buscar(stck A[], int num, char codiBuscar[]);
+
+/*
+Realitza una funció que guardi els productes que tinguin 
+un stock inferior a 5 en un altre fitxer anomenat  STOCK5.TXT
+*/
+
+void guardar(stck A[], int num, char nombre_fichero[]);
 
 int main(){
 
-	int n=1, num, opcio;
+	int n=1, num, opcio, j; 
 
 	stck A[nmax];
 
-	char nombre_fichero[12];
+	char nombre_fichero[12], codiBuscar[30];
 
 	FILE *f;
 
@@ -74,7 +86,7 @@ int main(){
 	
 		printf("   1.-Importar registros desde un fichero. \n");
 	
-		printf("   2.-Mostrar productos con precio > 15€. \n");
+		printf("   2.-Mostrar productos con precio superior a 15€. \n");
 
 		printf("   3.-Buscar producto por código y mostrar por pantalla. \n"); //usar strcmp;
 		
@@ -97,6 +109,7 @@ int main(){
 	switch(n){
 	
 		case 0: printf("Bye!! \n");
+		
 		break;
 	
 		case 1: printf("Introducir los datos desde un fichero. \n");
@@ -118,14 +131,18 @@ int main(){
 			printf("\n");
 			break;
 
-		case 3: 
+		case 3: printf("¿Qué código quieres buscar? \n");
+			scanf("%s", codiBuscar); 
+
+
+			buscar(A, num, codiBuscar);
 				
 
 			printf("\n");
 			
 			break;
 			
-		case 4: 
+		case 4: void guardar(A, num, nombre_fichero);
 			
 			printf("\n");
 			
@@ -217,3 +234,50 @@ void mostrar(stck A[], int num){
 			}
 
 }
+
+int buscar(stck A[], int num, char codiBuscar[]){
+
+	int i, j;
+
+
+		for(i=0;i<num;i++){
+
+				if(codiBuscar[j] == A[i].codi){
+
+				printf("Código: %s, Cantidad: %d, Precio: %d, Descripción: %s. \n", A[i].codi, A[i].quantitat, A[i].preu, A[i].descripcio);		
+		
+				}
+
+			}
+	
+	
+
+
+}
+
+void guardar(stck A[], int num, char nombre_fichero[]){
+
+/*
+Realitza una funció que guardi els productes que tinguin un stock inferior a 5 en un altre fitxer anomenat  STOCK5.TXT
+*/
+
+	
+		int i;
+	
+		FILE *f;
+
+		f=fopen(nombre_fichero, "w");
+		
+			
+			for(i=0;i<num;i++){
+
+			fprintf(f, "Nombre: %s. Teléfono: %s. \n", A[i].nom, A[i].telefon);
+
+			}
+
+
+		fclose(f);
+
+
+}
+
