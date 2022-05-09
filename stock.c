@@ -275,9 +275,11 @@ Realitza una funció que guardi els productes que tinguin un stock inferior a 5 
 
 
 					fprintf(f, "Código: %s, Cantidad: %d, Precio: %d, Descripción: %s. \n", A[i].codi, A[i].quantitat, A[i].preu, A[i].descripcio);
-					//fscanf (f, "%s  %d  %d %s", A[i].codi, &A[i].quantitat, &A[i].preu, A[i].descripcio);	
+					
 
-				}
+				
+			}
+
 			*num=i-1;
 
 			fclose (f);
