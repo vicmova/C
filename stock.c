@@ -208,7 +208,7 @@ void mostrar(stck A[], int num){
 
 			for(i=0;i<num;i++){
 
-				if(A[i].preu < 15){
+				if(A[i].preu > 15){
 
 				printf("Código: %s, Cantidad: %d, Precio: %d, Descripción: %s. \n", A[i].codi, A[i].quantitat, A[i].preu, A[i].descripcio);		
 		
