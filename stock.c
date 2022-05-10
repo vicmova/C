@@ -41,7 +41,12 @@ ir al fichero y leemos la posición.
 scanf 1 leer operador
 scanf 2
 a[ope[num[ope]]]
-num[ope]++;*/
+num[ope]++;
+función mostrar=también por filas
+
+V A[3][NMAX] = DEFINIR MATRIZ
+
+*/
 
 
 
@@ -69,7 +74,7 @@ Realitza una funció que busqui un producte donat un codi i mostri per pantalla,
 en cas que el producte es trobi, tots els camps del producte
 */
 
-//int buscar(stck A[], int num, char codiBuscar[]);
+int buscar(stck A[], int num, char codiBuscar[]);
 
 /*
 Realitza una funció que guardi els productes que tinguin 
@@ -153,7 +158,7 @@ int main(){
 			
 			break;
 			
-		case 4: guardar(A);
+		case 4: //guardar(A);
 			
 			printf("\n");
 			
@@ -218,13 +223,7 @@ int cargar(stck A[], int *num, char nombre_fichero[]){
 			
 		}
 
-		/*for(i=0;i<7;i++){
-
-			printf("Código: %s, Cantidad: %d, Precio: %d, Descripción: %s. \n", A[i].codi, A[i].quantitat, A[i].preu, A[i].descripcio);		
-		
-		}*/
-
-		
+				
 }
 
 void mostrar(stck A[], int num){
@@ -246,77 +245,49 @@ void mostrar(stck A[], int num){
 
 }
 
-/*int buscar(stck A[], int num, char codiBuscar[]){
-
-	int i, j;
+int buscar(stck A[], int num, char codiBuscar[]){
 
 
-		for(i=0;i<num;i++){
+	int i=0, res;
 
-				if(codiBuscar[j] == A[i].codi){
-
-				printf("Código: %s, Cantidad: %d, Precio: %d, Descripción: %s. \n", A[i].codi, A[i].quantitat, A[i].preu, A[i].descripcio);		
+		while(strcmp(A[i].codi, codiBuscar)!=0){
 		
-				}
-
-			}
-	
-	
-
-
-}*/
-
-/*
-int buscar(amigos A[], int num, int opcio, char cadena_buscar[]){	
-	
-	
-	int i=0;
-	
-		if(opcio==1){
-	
-			while(i<num && strcmp(A[i].nom, cadena_buscar)!=0){
 			
-
 				i++;
-				
-				}
-			
+
+
 				if(i==num){
 			
-				return -1;
+				res = -1;
 				
 				}
 			
 				else {
 			
-				return i;
+				res = i;
 			
 				}
-			
-				} else {
+				
+				
+
+				if (res == i) {
+
+					printf("Código: %s, Cantidad: %d, Precio: %d, Descripción: %s. \n", A[i].codi, A[i].quantitat, A[i].preu, A[i].descripcio);
+						
 		
-		
-				while(i<num && strcmp(A[i].telefon, cadena_buscar)!=0){
-			
-				i++;
-			
 				}
-		
-			if(i==num){
-		
-			return -1;
+				
+				
+				
+	
 			
-			} else {
-			
-			return i;
-		
-			}
-	}
+		}
+
 }
 
-*/
 
-void guardar(stck A[]){
+
+/*void guardar(stck A[]){
 
 	
 		int i, num;
@@ -343,4 +314,4 @@ void guardar(stck A[]){
 			}
 
 
-}
+}*/
