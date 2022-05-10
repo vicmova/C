@@ -253,6 +253,8 @@ void buscar(stck A[], int num, char codiBuscar[]){
 				} else {
 			
 				res = i;
+				
+				printf("Valor de i = %d \n", i);
 			
 				}
 				
