@@ -33,6 +33,17 @@
 */
 
 
+/*25 mayo = posible fecha de exámen;
+
+crear vecttos num con 3 posiciones inicializado a 0, es el um de registros q tengo en la fila de la matriz. 
+ir al fichero y leemos la posición.
+
+scanf 1 leer operador
+scanf 2
+a[ope[num[ope]]]
+num[ope]++;*/
+
+
 
 #include <stdio.h>
 #include<string.h>
@@ -65,7 +76,7 @@ Realitza una funció que guardi els productes que tinguin
 un stock inferior a 5 en un altre fitxer anomenat  STOCK5.TXT
 */
 
-void guardar(stck A[], int *num);
+void guardar(stck A[]);
 
 int main(){
 
@@ -131,18 +142,18 @@ int main(){
 			printf("\n");
 			break;
 
-		case 3: //printf("¿Qué código quieres buscar? \n");
-			//scanf("%s", codiBuscar); 
+		case 3: printf("¿Qué código quieres buscar? \n");
+			scanf("%s", codiBuscar); 
 
 
-			//buscar(A, num, codiBuscar);
+			buscar(A, num, codiBuscar);
 				
 
 			printf("\n");
 			
 			break;
 			
-		case 4: guardar(A, num);
+		case 4: guardar(A);
 			
 			printf("\n");
 			
@@ -255,14 +266,60 @@ void mostrar(stck A[], int num){
 
 }*/
 
-void guardar(stck A[], int *num){
-
 /*
-Realitza una funció que guardi els productes que tinguin un stock inferior a 5 en un altre fitxer anomenat  STOCK5.TXT
+int buscar(amigos A[], int num, int opcio, char cadena_buscar[]){	
+	
+	
+	int i=0;
+	
+		if(opcio==1){
+	
+			while(i<num && strcmp(A[i].nom, cadena_buscar)!=0){
+			
+
+				i++;
+				
+				}
+			
+				if(i==num){
+			
+				return -1;
+				
+				}
+			
+				else {
+			
+				return i;
+			
+				}
+			
+				} else {
+		
+		
+				while(i<num && strcmp(A[i].telefon, cadena_buscar)!=0){
+			
+				i++;
+			
+				}
+		
+			if(i==num){
+		
+			return -1;
+			
+			} else {
+			
+			return i;
+		
+			}
+	}
+}
+
 */
 
+void guardar(stck A[]){
+
 	
-		int i;
+		int i, num;
 	
 		FILE *f;
 
@@ -277,18 +334,13 @@ Realitza una funció que guardi els productes que tinguin un stock inferior a 5 
 					fprintf(f, "Código: %s, Cantidad: %d, Precio: %d, Descripción: %s. \n", A[i].codi, A[i].quantitat, A[i].preu, A[i].descripcio);
 					
 
-				
 			}
 
-			*num=i-1;
+			num=i-1;
 
 			fclose (f);
 
 			}
 
 
-		fclose(f);
-
-
 }
-
