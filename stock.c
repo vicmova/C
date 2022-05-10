@@ -69,17 +69,7 @@ int cargar(stck A[], int *num, char nombre_fichero[]);
 
 void mostrar(stck A[], int num);
 
-/*
-Realitza una funció que busqui un producte donat un codi i mostri per pantalla,  
-en cas que el producte es trobi, tots els camps del producte
-*/
-
-int buscar(stck A[], int num, char codiBuscar[]);
-
-/*
-Realitza una funció que guardi els productes que tinguin 
-un stock inferior a 5 en un altre fitxer anomenat  STOCK5.TXT
-*/
+void buscar(stck A[], int num, char codiBuscar[]);
 
 void guardar(stck A[]);
 
@@ -158,7 +148,7 @@ int main(){
 			
 			break;
 			
-		case 4: //guardar(A);
+		case 4: guardar(A);
 			
 			printf("\n");
 			
@@ -245,7 +235,7 @@ void mostrar(stck A[], int num){
 
 }
 
-int buscar(stck A[], int num, char codiBuscar[]){
+void buscar(stck A[], int num, char codiBuscar[]){
 
 
 	int i=0, res;
@@ -260,9 +250,7 @@ int buscar(stck A[], int num, char codiBuscar[]){
 			
 				res = -1;
 				
-				}
-			
-				else {
+				} else {
 			
 				res = i;
 			
@@ -275,19 +263,19 @@ int buscar(stck A[], int num, char codiBuscar[]){
 					printf("Código: %s, Cantidad: %d, Precio: %d, Descripción: %s. \n", A[i].codi, A[i].quantitat, A[i].preu, A[i].descripcio);
 						
 		
+				} else {
+
+					printf("El código introducino no corresponde a ningún producto. \n ");
 				}
 				
 				
-				
-	
-			
 		}
 
 }
 
 
 
-/*void guardar(stck A[]){
+void guardar(stck A[]){
 
 	
 		int i, num;
@@ -314,4 +302,4 @@ int buscar(stck A[], int num, char codiBuscar[]){
 			}
 
 
-}*/
+}
