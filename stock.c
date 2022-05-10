@@ -279,6 +279,12 @@ void buscar(stck A[], int num, char codiBuscar[]){
 
 void guardar(stck A[]){
 
+/*
+puntero=fopen("DATOS.DAT","r");
+puntero=fopen("C:\\TXT\\SALUDO.TXT","w");
+https://disenowebakus.net/ficheros.php
+*/
+
 	
 		int i, num;
 	
