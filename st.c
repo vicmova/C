@@ -75,6 +75,8 @@ void guardar(stck A[]);
 
 void guardar2(stck A[]);
 
+void userGuardaProducto(stock A[], char nombre_fichero[]);
+
 int main(){
 
 	int n=1, num, opcio, j; 
@@ -94,7 +96,7 @@ int main(){
 	
 		printf("   1.-Importar registros desde un fichero. \n");
 	
-		printf("   2.-Mostrar productos con precio superior a 15€. \n");
+		printf("   2.-Mostrar productos con precio inferior a 15€. \n");
 
 		printf("   3.-Buscar producto por código y mostrar por pantalla. \n"); //usar strcmp;
 		
@@ -151,12 +153,18 @@ int main(){
 			break;
 			
 		case 4: guardar(A);
+		
+			printf("El fichero STOCK5.TXT se ha generado correctamente. \n");
+			printf("Puedes encontrarlo ubicado en el mismo directorio que este script. \n");
 			
 			printf("\n");
 			
 			break;
 			
 		case 5: guardar2(A);
+		
+			printf("El fichero Productes.txt se ha generado correctamente. \n");
+			printf("Puedes encontrarlo ubicado en el mismo directorio que este script. \n");
 			
 		
 			printf("\n");
@@ -220,14 +228,14 @@ int cargar(stck A[], int *num, char nombre_fichero[]){
 
 void mostrar(stck A[], int num){
 
-	int i;
+	int i=0;
 		printf("------------------------------------ \n");
-		printf("Productos con precio inferior a 15€: \n");
+		printf("Productos con precio INFERIOR a 15€: \n");
 		printf("------------------------------------ \n");		
 
 			for(i=0;i<num;i++){
 
-				if(A[i].preu > 15){
+				if(A[i].preu < 15){
 
 				printf("Código: %s, Cantidad: %d, Precio: %d, Descripción: %s. \n", A[i].codi, A[i].quantitat, A[i].preu, A[i].descripcio);		
 		
@@ -245,17 +253,12 @@ int buscar(stck A[], char codiBuscar[]){
 		
 			i++;
 				
-
 			if (strcmp(codiBuscar, A[i].codi) == 0) {
 
 			printf("Código: %s, Cantidad: %d, Precio: %d, Descripción: %s. \n", A[i].codi, A[i].quantitat, A[i].preu, A[i].descripcio);
 						
 		
-				} /*else {
-
-					printf("El código introducino no corresponde a ningún producto. \n ");
-				}*/
-				
+			} 				
 				
 		}
 
@@ -264,13 +267,6 @@ int buscar(stck A[], char codiBuscar[]){
 
 
 void guardar(stck A[]){
-
-/*
-puntero=fopen("DATOS.DAT","r");
-puntero=fopen("C:\\TXT\\SALUDO.TXT","w");
-https://disenowebakus.net/ficheros.php
-*/
-
 	
 		int i, num;
 	
@@ -306,7 +302,7 @@ void guardar2(stck A[]) {
 	
 		FILE *f;
 
-		f=fopen("productes.TXT", "w");
+		f=fopen("Productes.TXT", "w");
 		
 			
 			//for(i=0;feof(f)==0;i++){
@@ -330,6 +326,13 @@ void guardar2(stck A[]) {
 
 }
 
+void userGuardaProducto(stock A[], char nombre_fichero[]){
+
+/*
+user añade producto a STOCK.TXT, en la línea final, debemos pedirle al user que introduzca los datos.
+*/
+
+}
 
 
 
