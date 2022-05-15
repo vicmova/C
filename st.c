@@ -48,8 +48,6 @@ V A[3][NMAX] = DEFINIR MATRIZ
 
 */
 
-
-
 #include <stdio.h>
 #include<string.h>
 
@@ -75,17 +73,20 @@ void guardar(stck A[]);
 
 void guardar2(stck A[]);
 
-void userGuardaProducto(stock A[], char nombre_fichero[]);
+//void guardarDesdeUser(stck A[], int *num, char nombre_fichero[]);
+void guardarDesdeUser(stck A[]);
 
 int main(){
 
-	int n=1, num, opcio, j; 
+	int n=1, num, opcio, j, i; 
 
 	stck A[nmax];
+	stck B[nmax];
 
 	char nombre_fichero[12], codiBuscar[30];
 
 	FILE *f;
+	
 
 	while(n!=0){
 
@@ -105,7 +106,6 @@ int main(){
 		printf("   5.-Guardar productos precio > 10€ && stock > 100. \n"); //file=Productes.txt;
 
 		printf("   6.-Añadir producto al stock. \n"); 
-		//Afegeix a l'arxiu stock.txt un article més. Demana a l'usuari que introdueixi les dades i afegeix-les al final del fitxer.
 
 		printf("   0.-Salir. \n");
 		
@@ -171,17 +171,22 @@ int main(){
 			
 			break;
 			
-		case 6: 
+		case 6: printf("Introduce los datos: código, cantidad, precio, descripción. \n");
 			
-		
-		
+			for(i=0;i<1;i++){	
+				
+			scanf("%s  %d  %d %s", A[i].codi, &A[i].quantitat, &A[i].preu, A[i].descripcio);
+			
+			}
+			
+			guardarDesdeUser(A);
+			
+			
 			printf("\n");
-			
 		
 			break;
 
-		
-
+	
 
 		default: printf("Opción incorrecta. \n");
 	
@@ -275,8 +280,6 @@ void guardar(stck A[]){
 		f=fopen("STOCK5.TXT", "w");
 		
 			
-			//for(i=0;feof(f)==0;i++){
-			
 			for(i=0;i<10;i++){
 			
 			if(A[i].quantitat < 5){
@@ -326,13 +329,20 @@ void guardar2(stck A[]) {
 
 }
 
-void userGuardaProducto(stock A[], char nombre_fichero[]){
+void guardarDesdeUser(stck A[]){
+	
+	int i;
 
-/*
-user añade producto a STOCK.TXT, en la línea final, debemos pedirle al user que introduzca los datos.
-*/
+	FILE *f=fopen("STOCK.TXT","a");
+		
+		for(i=0;i<1;i++){
+
+			fprintf(f, "%s  %d  %d %s", A[i].codi, A[i].quantitat, A[i].preu, A[i].descripcio);
+
+		}
+		
+		
+	fclose(f);
 
 }
-
-
 
