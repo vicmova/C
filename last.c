@@ -8,6 +8,19 @@ ir al fichero y leemos la posición.
 	num[ope]++;
 	función mostrar=también por filas
 	V A[3][NMAX] = DEFINIR MATRIZ
+
+	0 971286149 victor moragues valencia 0
+
+	file:
+
+	1 971464501 os b 1
+	0 971221114 lv l 1
+	2 601086396 k d 0
+	2 667010942 r h 0
+	0 615949821 t f 0
+	1 971286248 a ma 0
+
+
 */
 
 #include<stdio.h>
