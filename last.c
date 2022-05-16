@@ -13,8 +13,6 @@ ir al fichero y leemos la posición.
 
 	V A[3][NMAX] = DEFINIR MATRIZ
 
-	0 971286149 victor moragues valencia 0
-
 	file:
 
 	1 971464501 os b 1
