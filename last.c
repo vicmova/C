@@ -4,9 +4,13 @@ ir al fichero y leemos la posición.
 
 	scanf 1 leer operador
 	scanf 2
+
 	a[ope[num[ope]]]
+
 	num[ope]++;
+
 	función mostrar=también por filas
+
 	V A[3][NMAX] = DEFINIR MATRIZ
 
 	0 971286149 victor moragues valencia 0
