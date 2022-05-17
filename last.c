@@ -13,15 +13,7 @@ ir al fichero y leemos la posición.
 
 	V A[3][NMAX] = DEFINIR MATRIZ
 
-	file:
-
-	1 971464501 os b 1
-	0 971221114 lv l 1
-	2 601086396 k d 0
-	2 667010942 r h 0
-	0 615949821 t f 0
-	1 971286248 a ma 0
-
+	cada fila de m[][] pertenece a un operador.
 
 */
 
@@ -31,30 +23,26 @@ ir al fichero y leemos la posición.
 
 	typedef struct Ventas{
 
-		char tlf[9];
+			char tlf[9];
+			char cliente[40];
+			int tipoContrato;
 
-		char cliente[40];
-
-		int tipoContrato;
-
-		}venta;
+			}venta;
 
 
-int cargarFichero(venta A[], char nombre_empresa[]);
+int cargar(venta A[][nmax]);
 
 
 int main(){
 
- 	int n=1, i, num;
-	char nombre_empresa[12];
+ 	int n=1, i, j;
+	int operadora[3]={0,0,0};
 	venta A[3][nmax];
  
 	FILE*f;
 	
 	
 	
-	
- 
  	while(n!=0){
  	
  		printf("-----------------------------------------------------------\n");	
@@ -66,7 +54,7 @@ int main(){
  		
  		printf("2 - Introduce venta. \n");
  		
- 		printf("3 - Muestra información de un cliente. \n"); //buscar por telf strcmp;
+ 		printf("3 - Muestra información de un cliente. \n"); //buscar por telf con strcmp; pedir operadora y pasar como parámetro.
  		
  		printf("4 - Muestra información de todos los clientes. \n");
  		
@@ -93,19 +81,22 @@ int main(){
  		
  			break;
  		
- 		case 1: printf("Indica el nombre de la compañía. \n");
+ 		case 1: //printf("Indica el nombre de la compañía. \n");
 
-			cargarFichero(A, nombre_empresa);
-
-			for(i=0;i<num;i++){
-
-				printf("Teléfono: %s, Cliente: %s, Tipo de contrato: %d. \n", A[i].tlf, A[i].cliente, A[i].tipoContrato);		
-		
-			}
+			cargar(A);
 
 			printf("\n");
 
 			break;
+		
+		case 2:
+
+			
+
+			printf("\n");
+
+			break;
+
 
 
  		
@@ -118,35 +109,99 @@ int main(){
 
 }
 
-int cargarFichero(venta A[], char nombre_empresa){
+/*int cargar(venta A[][nmax]){
 
 
-		int i;
+		int i, j;
+		int operadora[3]={0,0,0};
 		
 		FILE *f=fopen("fichero.txt", "r");
-					
-	
+
 				if(f==NULL){
 	
-				return -1;			
+					return -1;			
 			
-				} else {
-		
-				for(i=0;feof(f)==0;i++){
+					} else {				
 
-	
-					fscanf (f, "%s  %s  %d", A[i].tlf, A[i].cliente, &A[i].tipoContrato);
+					for(i=0;i<3;i++){
+						
+						for(j=0;j<1;i++){
+		
+						fscanf(f,"%d", &operadora[i]);
 				
-				}	
+						}
+					}
+
+					}	
+		
+					for(i=0;i<3;i++){
+
+						for(j=0;feof(f)==0;j++){
+
+						
+							fscanf (f, "%s  %s  %d", A[i][j].tlf, A[i][j].cliente, &A[i][j].tipoContrato);
+					
+						}
+					
+					}
+
+			for(i=0;i<3;i++){
+
+				for(j=0;j<5;j++){
+
+					fprintf(f,"Teléfono: %s, Cliente: %s, Tipo de contrato: %d. \n", A[i][j].tlf, A[i][j].cliente, A[i][j].tipoContrato);	
+
+			
+			}
 
 			}
+	
+
+					
 			
-		//*num=i-1;
 
 		fclose (f);
 				
 			
-		}
+}*/
+
+int cargar(venta A[][nmax]){
+
+
+		int i, j;
+		int operadora[3]={0,0,0};
+		
+		FILE *f=fopen("fi.txt", "r");
 
 				
+			/*if(f==NULL){
+	
+				return -1;			
+			
+				} else {*/				
+
+				for(i=0;i<5;i++){
+					
+		
+						fscanf(f,"%d", &operadora[i]);
+				
+				}
+								
+
+					for(i=0;i<5;i++){
+						
+						
+		
+						printf("valor de la operadora: %d \n", operadora[i]);
+				
+
+					}			
+
+		fclose (f);
+				
 }
+		
+
+
+		
+		
