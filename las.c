@@ -16,7 +16,7 @@ int cargar(venta A[][nmax]);
 
 int main(){
 
- 	int n=1, i, j;
+ 	int i, j;
 	int operadora[3]={0,0,0};
 	venta A[3][nmax];
 	

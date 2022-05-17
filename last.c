@@ -30,7 +30,8 @@ ir al fichero y leemos la posición.
 			}venta;
 
 
-int cargar(venta A[][nmax]);
+void cargar(venta A[][nmax]);
+
 
 
 int main(){
@@ -84,6 +85,7 @@ int main(){
  		case 1: //printf("Indica el nombre de la compañía. \n");
 
 			cargar(A);
+
 
 			printf("\n");
 
@@ -165,13 +167,14 @@ int main(){
 			
 }*/
 
-int cargar(venta A[][nmax]){
+void cargar(venta A[][nmax]){
 
 
-		int i, j;
-		int operadora[3]={0,0,0};
-		
-		FILE *f=fopen("fi.txt", "r");
+
+	int i, j;
+	int operadora[3]={0,0,0};
+	
+	FILE *f=fopen("fi.txt", "r");
 
 				
 			/*if(f==NULL){
@@ -180,26 +183,32 @@ int cargar(venta A[][nmax]){
 			
 				} else {*/				
 
-				for(i=0;i<5;i++){
+				for(i=0;i<7;i++){
 					
 		
 						fscanf(f,"%d", &operadora[i]);
-				
+							
 				}
-								
 
-					for(i=0;i<5;i++){
+				printf("Fichero cargado \n");
+
+								
+					//mostrar para probar!
+					for(i=0;i<7;i++){
 						
 						
-		
-						printf("valor de la operadora: %d \n", operadora[i]);
+						printf("valor de la operadora[%d]: %d \n",i, operadora[i]);
 				
 
 					}			
 
-		fclose (f);
-				
+	fclose (f);
+					
+
+
 }
+				
+
 		
 
 
