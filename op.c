@@ -44,20 +44,20 @@ void contratos (venda v[3][nmax], int num[], int cont[]);
 
 void contacero (int cont[], int num[]);
 
-void salir();
-
-
 void main(){
 
 	venda v[3][nmax];
     
 	venda k;
     
-    int n=1, operador, posi, posj, res, op, cont[nmax];
+   	int n=1, operador, posi, posj, res, op, cont[nmax];
     
-    int num[3]={0,0,0};
-    
-    char nombrefichero[nmax], tlf[nmax], nombreborrar[nmax];
+	int num[3]={0,0,0};
+	
+	char nombrefichero[nmax], tlf[nmax], nombreborrar[nmax];
+
+	//char respuesta = n;
+	
     
     	printf("------------------------------------------------------------------------\n");
     	printf ("Indica el nombre del fichero que deseas cargar seguido de su extensión: \n");
@@ -71,19 +71,20 @@ void main(){
     	printf("--Opciones del menu--\n");
     	printf("---------------------\n");
 
-    while (n!=0){
+    
+	while (n!=0){
 
-        printf("1. Imprime las ventas. \n");
+        printf("1.-Imprimir las ventas. \n");
         
-        printf("2. Accede a la información mediante el número del teléfono. \n");
+        printf("2.-Buscar cliente por el número del teléfono. \n");
         
-        printf("3. Da de baja a un contacto. \n");
+        printf("3.-Dar de baja a un contacto. \n");
         
-        printf("4. Crea un contacto. \n");
+        printf("4.-Crear un contacto. \n");
         
-        printf("5. Contrato o targeta. \n");
+        printf("5.-Contrato o targeta. \n");
         
-        printf("6. Sal del programa. \n");
+        printf("6.-Salir del programa. \n");
 
 
         scanf("%d", &n);
@@ -97,17 +98,19 @@ void main(){
 			break;
             
             case 2: printf("Buscar teléfono: \n");
-                	scanf("%s", tlf);
+                	
+			scanf("%s", tlf);
                 	
                 	res=buscar (v, num, tlf, &posi, &posj);
                 	
                 	if (res==0){
                     	
-                    		printf("El contacto no aparece en el fichero. \n");
+                   
+                		printf("	El teléfono: %s no aparece en el listado. \n", tlf);
                 	
-                	} else {
+			} else {
                     	
-                    		printf("%s %d %s \n", v[posi][posj].tlf, v[posi][posj].contrato, v[posi][posj].nom);
+                    		printf("El teléfono introducido corresponde a: %s %d %s \n", v[posi][posj].tlf, v[posi][posj].contrato, v[posi][posj].nom);
                 	
                 	}
                 	
@@ -153,11 +156,18 @@ void main(){
                 	
                 	contratos(v,num,cont);
                 	
-            case 6: printf("¿Deseas salir del programa? \n");
+            case 6: printf("¿Deseas salir del programa? y/n \n");
+
+			/*if(respuesta=="y"){
+			
+				n==0;
+			}*/
+
+			printf("\n");                	
+			
+			break;
             
-            /*
-            if si== else---
-            */
+            		
         }
     }
 
@@ -191,20 +201,30 @@ void imprimir (venda v[3][nmax], int num[]){
         	if (i==0){
             
             		printf("MOVIESPLAN: \n");
+			
+			printf("\n");
         
         		} else if (i==1){
+			
+			printf("\n");
             
             		printf("VODASTONE: \n");
+			
+			printf("\n");
         
 			} else {
+
+			printf("\n");
             
             		printf("ALMENA: \n");
+			
+			printf("\n");
         		
 			}
 
         		for (j=0; j<num[i]; j++){
             
-            		printf("%s %d %s \n", v[i][j].tlf, v[i][j].contrato, v[i][j].nom);
+            			printf("	%s %d %s \n", v[i][j].tlf, v[i][j].contrato, v[i][j].nom);
             
         		}
     	}
@@ -349,3 +369,5 @@ void contacero (int cont[], int num[]){
         cont[x]=0;
     }
 }
+
+
