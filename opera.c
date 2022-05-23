@@ -7,12 +7,12 @@ file:
 
 0 1111 0 Wul
 1 2222 1 Luci
-2 3333 0 Oswald
-0 4444 1 Russ
+2 3333 0 Osw
+0 4444 1 Kevin
 1 0000 0 Roc
 0 5555 1 Joe
 2 1212 0 Tomeu
-1 2323 1 HUgo
+1 2323 1 Hugo
 0 0101 1 Victor
 2 1231 0 Tina
 1 3213 0 Ian
