@@ -2,18 +2,19 @@
 #include <string.h>
 
 /*
-file: ventas.txt
+nombre del fichero: ventas.txt
 
-	0 1111 0 Wul
-	1 2222 1 Luci
-	2 3333 0 Osw
-	0 4444 1 Kevin
-	1 0000 0 Roc
-	0 5555 1 Joe
-	2 1212 0 Tomeu
-	1 2323 1 Hugo
-	0 0101 1 Victor
-	2 1231 0 Tina
+0 1111 0 Wul
+1 2222 1 Luci
+2 3333 0 Osw
+0 4444 1 Kevin
+1 0000 0 Roc
+0 5555 1 Joe
+2 1212 0 Tomeu
+1 2323 1 Hugo
+0 0101 1 Victor
+2 1231 0 Tina
+
 */
 
 #define nmax 10
@@ -48,8 +49,9 @@ void salir();
 
 void main(){
 
-    venda v[3][nmax];
-    venda k;
+	venda v[3][nmax];
+    
+	venda k;
     
     int n=1, operador, posi, posj, res, op, cont[nmax];
     
@@ -182,51 +184,52 @@ void imprimir (venda v[3][nmax], int num[]){
   
     int i, j, operador;
 
-    for (i=0; i<3; i++){
+    	for (i=0; i<3; i++){
         
-        operador=i;
+        	operador=i;
         
-        if (i==0){
+        	if (i==0){
             
-            printf("MOVIESPLAN: \n");
+            		printf("MOVIESPLAN: \n");
         
-        } else if (i==1){
+        		} else if (i==1){
             
-            printf("VODASTONE: \n");
+            		printf("VODASTONE: \n");
         
-	} else {
+			} else {
             
-            printf("ALMENA: \n");
-        }
+            		printf("ALMENA: \n");
+        		
+			}
 
-        	for (j=0; j<num[i]; j++){
+        		for (j=0; j<num[i]; j++){
             
             		printf("%s %d %s \n", v[i][j].tlf, v[i][j].contrato, v[i][j].nom);
             
-        	}
-    }
+        		}
+    	}
 }
 
 int buscar (venda v[3][nmax], int num[], char tlf[], int *posi, int *posj){
     
     int i, j, trobat=0, res;
     
-    for (i=0; i<3; i++){
+    	for (i=0; i<3; i++){
         
-        for (j=0; j<num[i]; j++){
+        	for (j=0; j<num[i]; j++){
             
-            if (strcmp(tlf, v[i][j].tlf) == 0){
+            		if (strcmp(tlf, v[i][j].tlf) == 0){
                 
-                *posi=i;
+                		*posi=i;
                 
-                *posj=j;
+                		*posj=j;
                 
-                trobat=1;
-            }
-        }
-    }
+                		trobat=1;
+            		}
+        	}
+    	}
     
-    if (trobat==0){
+    	if (trobat==0){
         
         res=0;
         
@@ -237,7 +240,8 @@ int buscar (venda v[3][nmax], int num[], char tlf[], int *posi, int *posj){
         res=1;
         
         return res;
-    }
+    	
+	}
     
 }
 
@@ -258,7 +262,7 @@ int borrar (venda v[3][nmax], int num[], char nombreborrar[], int *posi, int *po
                 		trobat=1;
             		}
         	}
-    }
+    	}
     
     if (trobat==0){
         
