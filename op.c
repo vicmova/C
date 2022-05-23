@@ -92,6 +92,12 @@ void main(){
         switch(n){
 
             case 1: imprimir (v, num);
+
+			printf("Introduce una venta. \n");
+			
+			//f=fopen("ventas.txt", "a");			
+			
+			//fscanf();
             		
 			printf("\n");
             		
