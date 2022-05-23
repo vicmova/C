@@ -56,7 +56,7 @@ void main(){
 	
 	char nombrefichero[nmax], tlf[nmax], nombreborrar[nmax];
 
-	//char respuesta = n;
+	char respuesta;
 	
     
     	printf("------------------------------------------------------------------------\n");
@@ -93,11 +93,13 @@ void main(){
 
             case 1: imprimir (v, num);
 
+			printf("\n");
+
 			printf("Introduce una venta. \n");
 			
 			//f=fopen("ventas.txt", "a");			
 			
-			//fscanf();
+			//1 scanf x campo;
             		
 			printf("\n");
             		
@@ -164,16 +166,15 @@ void main(){
                 	
             case 6: printf("¿Deseas salir del programa? y/n \n");
 
-			/*if(respuesta=="y"){
+			if(respuesta == 'y'){
 			
-				n==0;
-			}*/
+				n=0;
+			}
 
 			printf("\n");                	
 			
 			break;
-            
-            		
+                    		
         }
     }
 
@@ -273,7 +274,7 @@ int buscar (venda v[3][nmax], int num[], char tlf[], int *posi, int *posj){
 
 int borrar (venda v[3][nmax], int num[], char nombreborrar[], int *posi, int *posj){
     
-	int i,j, trobat=0, res;
+	int i, j, trobat=0, res;
     
     	for (i=0;i<3;i++){
         
