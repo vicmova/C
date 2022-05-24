@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+// exámen: 18:30h
 
 /*
 file: 
@@ -52,7 +53,7 @@ void main(){
 	FILE *f;
 	
     
-	int n=1, operador, posi, posj, res, op, cont[nmax];
+	int n=1, operador, posi, posj, res, op, cont[nmax],x;
     
 	int num[3]={0,0,0};
     
@@ -106,6 +107,27 @@ void main(){
                     		printf("El contacto no aparece en el fichero. \n");
                 	
                 	} else {
+				
+				for (x=0; x<3; x++){
+        
+        			operador=x;
+		
+        
+        			if (x==0){
+            
+            			printf("	El usuario pertenece a: MOVIESPLAN: \n");
+        
+        			} else if (x==1){
+            
+            			printf("	El usuario pertenece a: VODASTONE: \n"); 
+	
+				} else {
+            
+            			printf("	El usuario pertenece a: ALMENA: \n");
+        	
+			}
+	
+	}
                     		
 				printf("	Teléfono: %s. Tipo de contrato: %d. Nombre: %s. \n", v[posi][posj].tlf, v[posi][posj].contrato, v[posi][posj].nom);
                 	
@@ -223,27 +245,9 @@ void imprimir (venda v[3][nmax], int num[]){
 
 int buscar (venda v[3][nmax], int num[], char tlf[], int *posi, int *posj){
     
-    int i, j, x, operador, trobat=0, res;
+    int i, j, x, operador, esta=0, res;
 
-	for (x=0; x<3; x++){
-        
-        	operador=x;
-        
-        	if (x==0){
-            
-            	printf("	El usuario pertenece a: MOVIESPLAN: \n");
-        
-        	} else if (x==1){
-            
-            	printf("	El usuario pertenece a: VODASTONE: \n"); 
 	
-		} else {
-            
-            	printf("	El usuario pertenece a: ALMENA: \n");
-        }
-}
-
-    
     for (i=0; i<3; i++){
         
         for (j=0; j<num[i]; j++){
@@ -254,17 +258,19 @@ int buscar (venda v[3][nmax], int num[], char tlf[], int *posi, int *posj){
                 
                 *posj=j;
                 
-                trobat=1;
+                esta=1;
+
             }
         }
     }
     
-    if (trobat==0){
+    if (esta==0){
         
         res=0;
         
         return res;
-    } else {
+    
+	} else {
         
         res=1;
         
@@ -317,18 +323,23 @@ int borrar (venda v[3][nmax], int num[], char nombreborrar[], int *posi, int *po
 
 void introducir (venda v[3][nmax], venda k, int num[], int op){
     
-    v[op][num[op]]= k;
-    num[op]++;
+    	v[op][num[op]]= k;
+    
+	num[op]++;
 }
 
 void contratos (venda v[3][nmax], int num[], int cont[]){
     int i, j, x;
     
     for (i=0; i<3;i++){
+
         for (j=0;j<num[i];j++){
-            if (v[i][j].contrato==1){
-                x=i;
-                cont[x]++;
+            
+		if (v[i][j].contrato==1){
+                
+		x=i;
+                
+		cont[x]++;
             }
         }
     }
