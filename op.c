@@ -186,7 +186,7 @@ void main(){
 
 			break;
                 	
-            case 6: printf("¿Deseas salir del programa? s/n \n");
+            case 6: printf("¿Seguro? s/n \n");
 
 			
 				scanf("%c", &salida);
