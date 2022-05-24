@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 
+
 /*
-nombre del fichero: ventas.txt
+file: 
 
 0 1111 0 Wul
 1 2222 1 Luci
@@ -14,18 +15,16 @@ nombre del fichero: ventas.txt
 1 2323 1 Hugo
 0 0101 1 Victor
 2 1231 0 Tina
-
+1 3213 0 Ian
 */
 
 #define nmax 10
 
 typedef struct vendas{
 
-    	char tlf[10];
-    	
-	int contrato;
-    
-	char nom[40];
+    char tlf[10];
+    int contrato;
+    char nom[10];
 
 }venda;
 
@@ -44,20 +43,20 @@ void contratos (venda v[3][nmax], int num[], int cont[]);
 
 void contacero (int cont[], int num[]);
 
+
 void main(){
 
 	venda v[3][nmax];
-    
 	venda k;
+		
+	FILE *f;
+	
     
-   	int n=1, operador, posi, posj, res, op, cont[nmax];
+	int n=1, operador, posi, posj, res, op, cont[nmax];
     
 	int num[3]={0,0,0};
-	
-	char nombrefichero[nmax], tlf[nmax], nombreborrar[nmax];
-
-	char respuesta;
-	
+    
+    char nombrefichero[nmax], tlf[nmax], nombreborrar[nmax];
     
     	printf("------------------------------------------------------------------------\n");
     	printf ("Indica el nombre del fichero que deseas cargar seguido de su extensión: \n");
@@ -71,20 +70,19 @@ void main(){
     	printf("--Opciones del menu--\n");
     	printf("---------------------\n");
 
-    
-	while (n!=0){
+    while (n!=0){
 
-        printf("1.-Imprimir las ventas. \n");
+        printf("1. Imprime las ventas. \n");
         
-        printf("2.-Buscar cliente por el número del teléfono. \n");
+        printf("2. Accede a la información mediante el número del teléfono. \n");
         
-        printf("3.-Dar de baja a un contacto. \n");
+        printf("3. Da de baja a un contacto. \n");
         
-        printf("4.-Crear un contacto. \n");
+        printf("4. Crea un contacto. \n");
         
-        printf("5.-Contrato o targeta. \n");
+        printf("5. Contrato o targeta. \n");
         
-        printf("6.-Salir del programa. \n");
+        printf("6. Sal del programa. \n");
 
 
         scanf("%d", &n);
@@ -92,39 +90,30 @@ void main(){
         switch(n){
 
             case 1: imprimir (v, num);
-
-			printf("\n");
-
-			printf("Introduce una venta. \n");
 			
-			//f=fopen("ventas.txt", "a");			
-			
-			//1 scanf x campo;
-            		
 			printf("\n");
-            		
-			break;
+            
+            		break;
             
             case 2: printf("Buscar teléfono: \n");
                 	
 			scanf("%s", tlf);
                 	
-                	res=buscar (v, num, tlf, &posi, &posj);
+                	res = buscar (v, num, tlf, &posi, &posj);
                 	
                 	if (res==0){
                     	
-                   
-                		printf("	El teléfono: %s no aparece en el listado. \n", tlf);
+                    		printf("El contacto no aparece en el fichero. \n");
                 	
-			} else {
-                    	
-                    		printf("El teléfono introducido corresponde a: %s %d %s \n", v[posi][posj].tlf, v[posi][posj].contrato, v[posi][posj].nom);
+                	} else {
+                    		
+				printf("	Teléfono: %s. Tipo de contrato: %d. Nombre: %s. \n", v[posi][posj].tlf, v[posi][posj].contrato, v[posi][posj].nom);
                 	
                 	}
-                	
+			
 			printf("\n");
-                	
-			break;
+                
+                	break;
             
             case 3: printf("Dar de baja por nombre: \n");
                 	
@@ -135,16 +124,15 @@ void main(){
                 	if (res==0){
                     	
                     	printf("El contacto no esta y no se ha podido borrar \n");
-                	
-			} else {
+                	} else {
                     
                     	printf("El contacto se ha borrado correctamente. \n");
                 	
                 	}
                 	
 			printf("\n");
-                	
-			break;
+		
+                	break;
             
             case 4: printf("Operador, telefono, contrato, nombre: \n");
                 
@@ -153,28 +141,28 @@ void main(){
                 	scanf("%s %d %s", k.tlf, &k.contrato, k.nom);
                 	
                 	introducir (v,k,num,op);
+
+			printf("\n");
                 
-			printf("\n");                	
-			
-			break;
+                	break;
                 
             case 5: printf("Compañias con más de 3 contratos (1) que no son de targeta (0)\n");
                 
                 	contacero (cont, num);
                 	
                 	contratos(v,num,cont);
-                	
-            case 6: printf("¿Deseas salir del programa? y/n \n");
 
-			if(respuesta == 'y'){
-			
-				n=0;
-			}
+			printf("\n");
 
-			printf("\n");                	
-			
 			break;
-                    		
+                	
+            case 6: printf("¿Deseas salir del programa? \n");
+
+			printf("\n");
+
+			break;
+            
+            
         }
     }
 
@@ -201,103 +189,115 @@ void imprimir (venda v[3][nmax], int num[]){
   
     int i, j, operador;
 
-    	for (i=0; i<3; i++){
+    for (i=0; i<3; i++){
         
-        	operador=i;
+        operador=i;
         
-        	if (i==0){
+        if (i==0){
             
-            		printf("MOVIESPLAN: \n");
-			
-			printf("\n");
+            	printf("MOVIESPLAN: \n");
+		
+		printf("\n");
         
-        		} else if (i==1){
-			
-			printf("\n");
+        } else if (i==1){
             
-            		printf("VODASTONE: \n");
-			
-			printf("\n");
-        
-			} else {
+            	printf("VODASTONE: \n");
+      		
+		printf("\n");  
+	
+	} else {
+            
+            	printf("ALMENA: \n");
+		
+		printf("\n");
+        }
 
-			printf("\n");
+        for (j=0; j<num[i]; j++){
             
-            		printf("ALMENA: \n");
-			
-			printf("\n");
-        		
-			}
-
-        		for (j=0; j<num[i]; j++){
+            printf("	%s %d %s", v[i][j].tlf, v[i][j].contrato, v[i][j].nom);
             
-            			printf("	%s %d %s \n", v[i][j].tlf, v[i][j].contrato, v[i][j].nom);
-            
-        		}
-    	}
+            printf("\n");
+        }
+    }
 }
 
 int buscar (venda v[3][nmax], int num[], char tlf[], int *posi, int *posj){
     
-    int i, j, trobat=0, res;
-    
-    	for (i=0; i<3; i++){
+    int i, j, x, operador, trobat=0, res;
+
+	for (x=0; x<3; x++){
         
-        	for (j=0; j<num[i]; j++){
+        	operador=x;
+        
+        	if (x==0){
             
-            		if (strcmp(tlf, v[i][j].tlf) == 0){
-                
-                		*posi=i;
-                
-                		*posj=j;
-                
-                		trobat=1;
-            		}
-        	}
-    	}
-    
-    	if (trobat==0){
+            	printf("	El usuario pertenece a: MOVIESPLAN: \n");
         
-        res=0;
-        
-        return res;
-    	
-	} else {
-        
-        res=1;
-        
-        return res;
-    	
-	}
-    
+        	} else if (x==1){
+            
+            	printf("	El usuario pertenece a: VODASTONE: \n"); 
+	
+		} else {
+            
+            	printf("	El usuario pertenece a: ALMENA: \n");
+        }
 }
 
-int borrar (venda v[3][nmax], int num[], char nombreborrar[], int *posi, int *posj){
     
-	int i, j, trobat=0, res;
-    
-    	for (i=0;i<3;i++){
+    for (i=0; i<3; i++){
         
-        	for (j=0; j<num[i]; j++){
+        for (j=0; j<num[i]; j++){
             
-            		if (strcmp(nombreborrar, v[i][j].nom) == 0){
+            if (strcmp(tlf, v[i][j].tlf) == 0){
                 
-                		*posi=i;
+                *posi=i;
                 
-                		*posj=j;
+                *posj=j;
                 
-                		trobat=1;
-            		}
-        	}
-    	}
+                trobat=1;
+            }
+        }
+    }
     
     if (trobat==0){
         
         res=0;
         
         return res;
+    } else {
+        
+        res=1;
+        
+        return res;
+    }
     
-	} else {
+}
+
+
+int borrar (venda v[3][nmax], int num[], char nombreborrar[], int *posi, int *posj){
+    int i,j, trobat=0, res;
+    
+    for (i=0;i<3;i++){
+        
+        for (j=0; j<num[i]; j++){
+            
+            if (strcmp(nombreborrar, v[i][j].nom) == 0){
+                
+                *posi=i;
+                
+                *posj=j;
+                
+                trobat=1;
+            }
+        }
+    }
+    
+    if (trobat==0){
+        
+        res=0;
+        
+        return res;
+    } else {
         
         for (i=*posi; i<3; i++){
             
@@ -317,30 +317,22 @@ int borrar (venda v[3][nmax], int num[], char nombreborrar[], int *posi, int *po
 
 void introducir (venda v[3][nmax], venda k, int num[], int op){
     
-	v[op][num[op]]= k;
-    
-	num[op]++;
+    v[op][num[op]]= k;
+    num[op]++;
 }
 
 void contratos (venda v[3][nmax], int num[], int cont[]){
+    int i, j, x;
     
-	int i,j,x;
-    
-    	for (i=0; i<3;i++){
-        
-		for (j=0;j<num[i];j++){
-            
-			if (v[i][j].contrato==1){
-                
-			x=i;
-                
-			cont[x]++;
-            		
-			}
-        	}
-    	}
-            
-	i=0;
+    for (i=0; i<3;i++){
+        for (j=0;j<num[i];j++){
+            if (v[i][j].contrato==1){
+                x=i;
+                cont[x]++;
+            }
+        }
+    }
+            i=0;
             
             while (i<3){
                 
@@ -351,12 +343,10 @@ void contratos (venda v[3][nmax], int num[], int cont[]){
                     if (x==0){
                         
                         printf("Moviesplan \n");
-                    
-			} else if (x==1){
+                    } else if (x==1){
                         
                         printf("Vodastone \n");
-                    
-			} else {
+                    } else {
                         
                         printf("Almena \n");
                     }
@@ -376,5 +366,3 @@ void contacero (int cont[], int num[]){
         cont[x]=0;
     }
 }
-
-
