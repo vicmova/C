@@ -51,6 +51,8 @@ void main(){
 
 	venda v[3][nmax];
 	venda k;
+
+	char salida;
 		
 	FILE *f;
 	
@@ -184,7 +186,17 @@ void main(){
 
 			break;
                 	
-            case 6: printf("¿Deseas salir del programa? \n");
+            case 6: printf("¿Deseas salir del programa? s/n \n");
+
+			
+				scanf("%c", &salida);
+
+
+				if(salida=='s'){
+
+					n=0;				
+
+				}
 
 			printf("\n");
 
