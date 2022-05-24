@@ -4,7 +4,9 @@
 // exámen: 18:30h
 
 /*
-file: 
+nombre del fichero: ventas.txt 
+
+contenido del fichero: 
 
 0 1111 0 Wul
 1 2222 1 Luci
@@ -52,8 +54,7 @@ void main(){
 		
 	FILE *f;
 	
-    
-	int n=1, operador, posi, posj, res, op, cont[nmax],x;
+    	int n=1, operador, posi, posj, res, op, cont[nmax],x;
     
 	int num[3]={0,0,0};
     
@@ -93,6 +94,10 @@ void main(){
             case 1: imprimir (v, num);
 			
 			printf("\n");
+
+			printf("Introduce una venta. \n");
+
+			
             
             		break;
             
@@ -108,7 +113,7 @@ void main(){
                 	
                 	} else {
 				
-				for (x=0; x<3; x++){
+				/*for (x=0; x<3; x++){
         
         			operador=x;
 		
@@ -125,9 +130,9 @@ void main(){
             
             			printf("	El usuario pertenece a: ALMENA: \n");
         	
-			}
+				}
 	
-	}
+				}*/
                     		
 				printf("	Teléfono: %s. Tipo de contrato: %d. Nombre: %s. \n", v[posi][posj].tlf, v[posi][posj].contrato, v[posi][posj].nom);
                 	
@@ -145,10 +150,11 @@ void main(){
                 	
                 	if (res==0){
                     	
-                    	printf("El contacto no esta y no se ha podido borrar \n");
-                	} else {
+                    	printf("El contacto no pertenece a este fichero. \n");
+                	
+			} else {
                     
-                    	printf("El contacto se ha borrado correctamente. \n");
+                    	printf("El contacto ha sido eliminado. \n");
                 	
                 	}
                 	
@@ -353,7 +359,8 @@ void contratos (venda v[3][nmax], int num[], int cont[]){
                     
                     if (x==0){
                         
-                        printf("Moviesplan \n");
+                        
+			printf("Moviesplan \n");
                     } else if (x==1){
                         
                         printf("Vodastone \n");
