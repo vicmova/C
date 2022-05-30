@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 
-// exámen: 18:30h
-
 /*
 nombre del fichero: ventas.txt 
 
