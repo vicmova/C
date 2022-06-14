@@ -155,7 +155,7 @@ void transponer(int m[nmax][nmax], int mt[nmax][nmax]){
 		for(i=0;i<nmax;i++){
 			for(j=0;j<nmax;j++){
 			
-				mt[i][j]=m[j][i];
+				mt[j][i]=m[i][j];
 				
 			}
 		}
